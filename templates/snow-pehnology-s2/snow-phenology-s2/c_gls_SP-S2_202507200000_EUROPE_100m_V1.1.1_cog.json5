@@ -11,7 +11,7 @@
         "https://stac-extensions.github.io/raster/v2.0.0/schema.json",
         "https://stac-extensions.github.io/classification/v2.0.0/schema.json"
     ],
-    "id": "c_gls_SP-S2_202507200000_EUROPE_100m_V1.1.1_cog",
+    "id": "c_gls_SP-S2_202507200000_EUROPE_100m_V1.1.1_cog", /*Here we should stick with the currenrt naming of HR-WSI products*/
     "bbox": [
         "<WEST_BOUNDING_LONGITUDE>",
         "<SOUTH_BOUNDING_LATITUDE>",
@@ -117,6 +117,7 @@
             "roles": [
                 "data",
                 "metadata",
+                "quality",
                 "archive"
             ],
             "title": "TAR product",
@@ -128,7 +129,6 @@
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
             "roles": ["quality","data"],
             "data_type": "uint8",
-            "nodata": 255,
             "classification:classes": "<CLASS_OBJECT>", /* classififcation extension */
             "file:checksum": "<CHECKSUM_QAFLAGS>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_QAFLAGS.tif",
@@ -169,7 +169,7 @@
             "title": "Snow Cover Onset date",
             "description": "Snow cover onset-date defined as the first day of the longest snow cover period, and associated information.",
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-            "roles": ["data","date"],
+            "roles": ["data"],
             "data_type": "uint16",
             "nodata": 65535,
             "file:checksum": "<CHECKSUM_SCO>",/* must be multihash encoded */
@@ -180,7 +180,7 @@
             "title": "Snow Cover Melt date",
             "description": "Snow cover melt out date is defined as the last day of the longest snow cover period and associated information.",
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-            "roles": ["data","date"],
+            "roles": ["data"],
             "data_type": "uint16",
             "nodata": 65535,
             "file:checksum": "<CHECKSUM_SCM>",/* must be multihash encoded */
@@ -193,7 +193,6 @@
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
             "roles": ["data","quality"],
             "data_type": "uint16",
-            "nodata": 65535,
             "classification:classes": "<CLASS_OBJECT>", /* classififcation extension */
             "file:checksum": "<CHECKSUM_SCD-QA>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_SCD-QA.tif",
@@ -205,7 +204,6 @@
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
             "roles": ["data","quality"],
             "data_type": "uint16",
-            "nodata": 65535,
             "file:checksum": "<CHECKSUM_SCO-QA>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_SCO-QA.tif",
             "file:size": "<SIZE_SCO-QA>"
@@ -216,7 +214,6 @@
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
             "roles": ["data","quality"],
             "data_type": "uint16",
-            "nodata": 65535,
             "file:checksum": "<CHECKSUM_SCM-QA>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_SCM-QA.tif",
             "file:size": "<SIZE_SCM-QA>"

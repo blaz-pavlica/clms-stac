@@ -11,7 +11,7 @@
         "https://stac-extensions.github.io/raster/v2.0.0/schema.json",
         "https://stac-extensions.github.io/classification/v2.0.0/schema.json"
     ],
-    "id": "c_gls_SP-S1S2_202507200000_EUROPE_20m_V1.1.1_cog",
+    "id": "c_gls_SP-S1S2_202507200000_EUROPE_20m_V1.1.1_cog",  /*Here we should stick with the currenrt naming of HR-WSI products*/
     "bbox": [
         "<WEST_BOUNDING_LONGITUDE>",
         "<SOUTH_BOUNDING_LATITUDE>",
@@ -119,7 +119,9 @@
             "file:size": "<NUMBER>",
             "roles": [
                 "data",
-                "metadata"
+                "metadata",
+                "quality",
+                "archive"
             ],
             "title": "TAR product",
             "type": "application/tar"
@@ -196,7 +198,6 @@
                 "data"
             ],
             "data_type": "uint8",
-            "nodata": 255,
             "file:checksum": "<CHECKSUM_QAFLAGS>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/../sp-s1s2_<tile>_<year>_QAFLAGS.tif",
             "file:size": "<SIZE_QAFLAGS>"
@@ -210,7 +211,6 @@
                 "data"
             ],
             "data_type": "uint8",
-            "nodata": 255,
             "classification:classes": "<CLASS_OBJECT>", /* classififcation extension */
             "file:checksum": "<CHECKSUM_SCD_QA>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/../sp-s1s2_<tile>_<year>_SCD-QA.tif",
@@ -225,7 +225,6 @@
                 "data"
             ],
             "data_type": "uint8",
-            "nodata": 255,
             "file:checksum": "<CHECKSUM_SCO_QA>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/../sp-s1s2_<tile>_<year>_SCO-QA.tif",
             "file:size": "<SIZE_SCO_QA>"
@@ -239,7 +238,6 @@
                 "data"
             ],
             "data_type": "uint8",
-            "nodata": 255,
             "file:checksum": "<CHECKSUM_SCM_QA>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/../sp-s1s2_<tile>_<year>_SCM-QA.tif",
             "file:size": "<SIZE_SCM_QA>"

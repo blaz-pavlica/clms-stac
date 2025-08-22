@@ -7,8 +7,9 @@
         "https://stac-extensions.github.io/processing/v1.2.0/schema.json", /* REQUIRED */
         "https://stac-extensions.github.io/product/v1.0.0/schema.json", /* REQUIRED */
         "https://stac-extensions.github.io/projection/v2.0.0/schema.json", /* REQUIRED */
-        "https://stac-extensions.github.io/region/v0.1.0/schema.json",
-        "https://stac-extensions.github.io/version/v1.2.0/schema.json"
+        "https://stac-extensions.github.io/classification/v2.0.0/schema.json",
+        "https://stac-extensions.github.io/version/v1.2.0/schema.json",
+        "https://stac-extensions.github.io/contacts/v1.0.0/schema.json"
     ],
     "id": "hrwsi_gfsc_<projection>_<resolution>_v<version>_<frequency>", /* There is an ongoing discusion if the id should include the type of dile, coq or nc. */
     "title": "Gap-Filled Fractional Snow Cover 2016-present (raster 20 m), Europe, daily",
@@ -18,18 +19,18 @@
         "spatial": {
             "bbox": [
                 [
-                    66.00,
-                    34.00,
-                    44.00,
-                    -26.00
+                    <lon_min>,
+                    <lat_min>,
+                    <lon_min>,
+                    <lat_min>
                 ]
-            ] /* bbox defined in metadata file */
+            ] /* https://github.com/radiantearth/stac-spec/blob/master/collection-spec/collection-spec.md#spatial-extent-object */
         },
         "temporal": {
             "interval": [
                 [
-                    "2016-09-01T00:00:00.000Z",
-                    null
+                    "YYYY-MM-DDT00:00:00.000Z",
+                    null /* null if collection is still being added */
                 ]
             ] /* Begin date in metadata file */
         }
@@ -56,54 +57,35 @@
             "roles":["host"]
         }
     ],
-    "region:name": "<REGION_NAME>", /* example: global, EEA38+UK */
     "version": "<number>",
     "gsd": 20,
     "summaries": {
-        "eo:cloud_cover": {
-            "minimum": "<MIN_CLOUD_COVER>",
-            "maximum": "<MAX_CLOUD_COVER>"
-        }, /* If Possible - Percentage of the scene that is covered by clouds, expressed as a value between 0 and 100. */
         "grid:code": [
             "<GRID_CODE_1>",
             "<GRID_CODE_2>"
         ], /* REQUIRED IF APPLICABLE. https://github.com/stac-extensions/grid#gridcode  */
-        "gsd": {
-            "minimum": "<MIN_GSD>",
-            "maximum": "<MAX_GSD>"
-        }, /* REQUIRED. Ground Sample Distance at the sensor, in meters (m), must be greater than 0. https://github.com/radiantearth/stac-spec/blob/master/commons/common-metadata.md#gsd  */
+        "gsd": [
+            20
+        ], /* REQUIRED. Ground Sample Distance at the sensor, in meters (m), must be greater than 0. https://github.com/radiantearth/stac-spec/blob/master/commons/common-metadata.md#gsd  */
         "processing:facility": [
-            "<PROCESSING_FACILITY_1>",
-            "<PROCESSING_FACILITY_2>"
+            "Magellium"
         ], /* REQUIRED. The name of the facility that produced the data. For example, Copernicus S1 Core Ground Segment - DPA for product of Sentinel-1 satellites. */
         "processing:level": [
-            "<PROCESSIN_LEVEL_1>",
-            "<PROCESSIN_LEVEL_2>"
+            "<PROCESSIN_LEVEL_1>"
         ], /* REQUIRED. https://github.com/stac-extensions/processing?tab=readme-ov-file#suggested-processing-levels */
         "product:type": [
-            "<PRODUCT_TYPE_1>",
-            "<PRODUCT_TYPE_2>"
+            "<PRODUCT_TYPE_1>"
         ], /* REQUIRED. The product type., */
-        "product:timeliness": {
-            "minimum": "<MIN_TIMELINESS>",
-            "maximum": "<MAX_TIMELINESS>"
-        }, /* REQUIRED. The average expected timeliness of the product as an ISO 8601 Duration., */
+        "product:timeliness": [
+            "<TIMELINESS>"
+        ], /* REQUIRED. The average expected timeliness of the product as an ISO 8601 Duration., */
         "product:timeliness_category": [
-            "<TIMELINESS_CATEGORY1>",
-            "<TIMELINESS_CATEGORY2>",
+            "<TIMELINESS_CATEGORY1>"
         ],
         "proj:code": [
             "<PROJ_CODE_1>",
             "<PROJ_CODE_2>"
-        ], /* REQUIRED Authority and specific code of the data source (e.g., EPSG:3857) NULL for data in satellite projection. */
-        "proj:shape": {
-            "type": "array",
-            "items": {
-                "type": "integer"
-            },
-            "minItems": 2,
-            "maxItems": 2
-        }, /* REQUIRED Number of pixels in Y and X directions for the default grid */
+        ] /* REQUIRED Authority and specific code of the data source (e.g., EPSG:3857) NULL for data in satellite projection. */
     },
     "links": [
         {
@@ -115,6 +97,12 @@
             "rel": "items",
             "href": "<CDSE_COLLECTION_LINK>/items",
             "type": "application/geo+json"
+        },
+        {
+            "rel": "license",
+            "href": "https://land.copernicus.eu/en/data-policy",
+            "type": "text/html",
+            "title": "Legal notice on the use of Copernicus Land Monitoring Service (CLMS) data"
         }
     ],
     "keywords": [
@@ -124,6 +112,40 @@
         "land cover",
         "landscape alteration",
         "monitoring",
-        "climate change impact"
+        "climate change impact",
+        "fractional snow cover",
+        "HR-WSI",
+        "CLMS"
     ],
+    "contacts": [
+      {
+        "name": "Copernicus Land Monitoring Service",
+        "organization": "European Environment Agency",
+        "roles":["producer"],
+        "emails": [
+        	{
+        		"value":"copernicus@eea.europa.eu",
+        		"roles":[
+        			"contact point"
+        		]
+        	}
+    	],
+        "phones": [
+        	{
+        		"value":"+45 33 36 71 00",
+        		"roles":[
+        			"contact point"
+        		]
+    		}
+    	],
+        "links": [
+        	{
+        		"href":"https://land.copernicus.eu/",
+    			"rel":"about",
+    			"type":"text/html",
+    			"title":"Homepage of the Copernicus Land Monitoring Service"
+        	}
+    	]
+      }
+     ]
 }

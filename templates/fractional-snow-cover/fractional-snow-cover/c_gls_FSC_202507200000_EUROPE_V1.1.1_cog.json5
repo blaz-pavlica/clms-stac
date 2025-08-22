@@ -10,7 +10,7 @@
         "https://stac-extensions.github.io/raster/v2.0.0/schema.json",
         "https://stac-extensions.github.io/classification/v2.0.0/schema.json"
     ],
-    "id": "c_gls_FSC_202507200000_EUROPE_V1.1.1_cog",
+    "id": "c_gls_FSC_202507200000_EUROPE_V1.1.1_cog", /*Here we should stick with the currenrt naming of HR-WSI products*/
     "bbox": [
         "<WEST_BOUNDING_LONGITUDE>",
         "<SOUTH_BOUNDING_LATITUDE>",
@@ -115,7 +115,9 @@
             "roles": [
                 "data",
                 "metadata",
-                "archive"
+                "archive",
+                "quality",
+                "mask"
             ],
             "title": "TAR product",
             "type": "application/tar"
@@ -157,7 +159,6 @@
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
             "roles": ["quality","data"],
             "data_type": "uint8",
-            "nodata": 255,
             "classification:classes": "<CLASS_OBJECT>", /* classififcation extension */
             "file:checksum": "<CHECKSUM_FSCTOC_QA>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_FSCTOC-QA.tif",
@@ -169,7 +170,6 @@
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
             "roles": ["quality","data"],
             "data_type": "uint8",
-            "nodata": 255,
             "classification:classes": "<CLASS_OBJECT>", /* classififcation extension */
             "file:checksum": "<CHECKSUM_FSCOG_QA>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_FSCOG-QA.tif",
@@ -181,7 +181,6 @@
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
             "roles": ["quality","data"],
             "data_type": "uint8",
-            "nodata": 255,
             "classification:classes": "<CLASS_OBJECT>", /* classififcation extension */
             "file:checksum": "<CHECKSUM_QAFLAGS>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_QAFLAGS.tif",
@@ -203,7 +202,7 @@
             "title": "Normalized Difference Snow Index (NDSI)",
             "description": "NDSI scaled or categorized as uint8",
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
-            "roles": ["index"],
+            "roles": ["data"],
             "data_type": "uint8",
             "nodata": 255,
             "file:checksum": "<CHECKSUM_NDSI>",/* must be multihash encoded */

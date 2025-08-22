@@ -10,7 +10,7 @@
         "https://stac-extensions.github.io/raster/v2.0.0/schema.json",
         "https://stac-extensions.github.io/classification/v2.0.0/schema.json"
     ],
-    "id": "c_gls_SWS_202507200000_EUROPE_V1.1.1_cog",
+    "id": "c_gls_SWS_202507200000_EUROPE_V1.1.1_cog", /*Here we should stick with the currenrt naming of HR-WSI products*/
     "bbox": [
         "<WEST_BOUNDING_LONGITUDE>",
         "<SOUTH_BOUNDING_LATITUDE>",
@@ -50,7 +50,7 @@
         "description": "The SAR Wet Snow (SWS) product is generated in near real-time for selected high mountain areas at European scale based on C-band SAR satellite data from the Sentinel-1 constellation. The product provides the wet snow extent for high mountain areas with a spatial resolution of 60 m x 60 m.",
         "start_datetime": "<START_DATETIME>" /* https://github.com/radiantearth/stac-spec/blob/master/commons/common-metadata.md#date-and-time-range */
         "end_datetime": "<END_DATETIME>",
-        "gsd": 20,
+        "gsd": 60,
         "grid:code": "MGRS-<TILE_ID>",
         "instruments": [
             "sar"
@@ -115,6 +115,7 @@
             "roles": [
                 "data",
                 "metadata",
+                "quality",
                 "archive"
             ],
             "title": "TAR product",
@@ -131,7 +132,7 @@
         },
         "WSM": {
             "title": "Wet Snow Map (SAR-based)",
-            "description": "Wet Snow classification in high Mountains areas (WSM) and associated information. ",
+            "description": "Wet Snow classification in high Mountains areas (WSM) and associated information.",
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
             "roles": ["data"],
             "data_type": "uint8",
@@ -147,7 +148,6 @@
             "type": "image/tiff; application=geotiff; profile=cloud-optimized",
             "roles": ["data","quality"],
             "data_type": "uint8",
-            "nodata": 255,
             "classification:classes": "<CLASS_OBJECT>", /* classififcation extension */
             "file:checksum": "<CHECKSUM_WSM-QA>",/* must be multihash encoded */
             "file:local_path": "<PRODUCT_ID>/../<PRODUCT_ID>_WSM-QA.tif",
